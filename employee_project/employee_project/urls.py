@@ -25,6 +25,9 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from employees.views import charts_view
 from employees.views import home_view
+from employees.views import CustomTokenAuthView
+
+
 
 
 
@@ -52,6 +55,7 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),  # Token auth endpoint
     path('dashboard/', charts_view, name='charts-dashboard'),
     path('', home_view, name='home'),
+    path('api-token-auth/', CustomTokenAuthView.as_view(), name='custom-token-auth'),    # For POST
 ]
 urlpatterns += [
     path('api-token-auth/', obtain_auth_token),
