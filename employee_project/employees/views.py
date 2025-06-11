@@ -20,3 +20,6 @@ class DepartmentViewSet(viewsets.ModelViewSet):
 
 def charts_view(request):
     return render(request, 'charts.html')
+
+def home_view(request):
+    return render(request, 'home.html')
