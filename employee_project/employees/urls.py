@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import EmployeeViewSet, DepartmentViewSet  # import your viewsets
 from .views_charts import employees_per_department, monthly_attendance_overview
+from employees.views import charts_view
 
 router = DefaultRouter()
 router.register(r'employees', EmployeeViewSet)
@@ -11,4 +12,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('charts/employees-per-department/', employees_per_department, name='employees-per-department'),
     path('charts/monthly-attendance/', monthly_attendance_overview, name='monthly-attendance-overview'),
+    path('dashboard/', charts_view, name='charts-dashboard'),
 ]
