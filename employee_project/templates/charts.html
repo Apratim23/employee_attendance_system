@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Employee Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Responsive chart containers */
+        .chart-container {
+            width: 320px;
+            margin-bottom: 32px;
+        }
+        #departmentChart {
+            max-width: 220px;
+            max-height: 220px;
+        }
+        #attendanceChart {
+            max-width: 400px;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📊 Employees per Department</h2>
+    <div class="chart-container">
+        <canvas id="departmentChart" width="220" height="220"></canvas>
+    </div>
+
+    <h2>📅 Monthly Attendance Overview</h2>
+    <div class="chart-container">
+        <canvas id="attendanceChart" width="400" height="300"></canvas>
+    </div>
+
+    <script>
+        // Fetch and render Employees per Department (Pie)
+        fetch('/api/charts/employees-per-department/')
+            .then(res => res.json())
+            .then(data => {
+                const ctx = document.getElementById('departmentChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Employees Count',
+                            data: data.values,
+                            backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0','#FF5FC0'],
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            });
+
+        // Fetch and render Monthly Attendance (Bar)
+        fetch('/api/charts/monthly-attendance/')
+            .then(res => res.json())
+            .then(data => {
+                const ctx = document.getElementById('attendanceChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Attendance Count',
+                            data: data.values,
+                            backgroundColor: '#4CAF50',
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            y: { beginAtZero: true }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
