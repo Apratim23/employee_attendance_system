@@ -1,0 +1,10 @@
+{
+    "cSpell.words": [
+        "djangorestframework",
+        "dotenv",
+        "gunicorn",
+        "psycopg",
+        "wsgi",
+        "yasg"
+    ]
+}
