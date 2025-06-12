@@ -100,7 +100,7 @@ langchain-cli==0.0.35
 langchain-community==0.2.0
 langchain-core==0.2.43
 langchain-text-splitters==0.2.4
-langserve==0.3.1
+langserve==0.3.0
 langsmith==0.1.147
 libclang==18.1.1
 llama-cloud==0.1.11
