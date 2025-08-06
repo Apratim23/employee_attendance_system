@@ -63,7 +63,7 @@ Monthly attendance bar graph
 🔧 Local Setup
 ---
 ```bash
-git clone https://github.com/YOUR_USERNAME/employee-management-system.git
+git clone https://github.com/Apratim23/employee-management-system.git
 cd employee-management-system
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
